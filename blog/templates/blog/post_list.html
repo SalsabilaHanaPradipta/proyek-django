@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="intro-text">
+    <h2>Selamat Datang di Blog PTI</h2>
+    <p class="text-muted">Tempat berbagi informasi seputar teknologi dan pendidikan.</p>
+</div>
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <img src="https://picsum.photos/seed/{{ post.id }}/400/250" class="card-img-top" alt="post image">
+            
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text text-muted small">{{ post.text|truncatechars:80 }}</p>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary w-100">Baca Selengkapnya</a>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <p class="text-muted" style="font-size: 0.8rem;">Dipublikasi pada {{ post.published_date }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+        <p class="alert alert-info">Belum ada postingan. Silakan tambah lewat Admin!</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

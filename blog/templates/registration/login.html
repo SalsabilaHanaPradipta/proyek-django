@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <h2 class="text-center mb-4" style="font-family: 'Lobster';">Please login:</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-outline-warning w-100" style="color: #c35a14; border-color: #c35a14;">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
